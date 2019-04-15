@@ -79,4 +79,11 @@ object AnonymousFunctions extends App {
   // 2. Rewrite the "special" adder
   val superAdder: Int => Int => Int = a => b => a + b
   println(superAdder(3)(4))
+
+  // for comprehensions
+  val combinations = for {
+    n <- listOfInteger if (n % 2 == 0)
+    s <- listOfString
+  } yield n + "-" + s
+  println(combinations)
 }
