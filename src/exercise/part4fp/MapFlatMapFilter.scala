@@ -2,6 +2,24 @@ package exercise.part4fp
 
 object MapFlatMapFilter extends App {
 
+    val nums = List(1, 2, 3)
+    val strs = List("Hello", "Scala")
+    val chars = List('a', 'b', 'c', 'd')
+
+    val combinations = nums.filter(_ % 2 !=0).flatMap(i => chars.flatMap(c => strs.map(s => "" + c + i + "-" + s)))
+    println(combinations)
+
+    // for comprehensions
+    val combs = for {
+      i <- nums if i % 2 == 0
+      c <- chars
+      s <- strs
+    } yield "" + c + i + "-" + s
+    println(combs)
+
+    /*
+    Exercise
+     */
     abstract class Maybe[+T] {
 
       def map[B](f: T => B): Maybe[B]
